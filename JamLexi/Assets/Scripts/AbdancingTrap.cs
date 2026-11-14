@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class AbdancingTrap : MonoBehaviour
 {
     [SerializeField] float velocity = 5.0f;
@@ -24,7 +25,7 @@ public class AbdancingTrap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (isDead) return;
-        playerMovement2D.Stun(2);
+        playerMovement2D.Stun(1.5f);
         Death();
     }
 

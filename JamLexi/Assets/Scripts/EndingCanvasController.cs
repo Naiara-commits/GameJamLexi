@@ -3,14 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class EndingCanvasController : MonoBehaviour
 {
-    [SerializeField] public GameObject endingCanvas;
-
+    public GameObject endingCanvas;
+    [SerializeField] TimeCounterManager timeCounterManager;
     private bool concluded = false;
 
     public void Awake()
     {
         endingCanvas.SetActive(false);
-     
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +20,7 @@ public class EndingCanvasController : MonoBehaviour
     }
     public void Victoria()
     {
+        timeCounterManager.EndCounter();
         endingCanvas.SetActive(true);
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
