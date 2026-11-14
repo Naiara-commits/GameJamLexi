@@ -5,6 +5,8 @@ public class EndingCanvasController : MonoBehaviour
 {
     public GameObject endingCanvas;
     [SerializeField] TimeCounterManager timeCounterManager;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip victorySound;
     private bool concluded = false;
 
     public void Awake()
@@ -13,7 +15,7 @@ public class EndingCanvasController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !concluded)
         {
             Victoria();
         }
@@ -22,6 +24,10 @@ public class EndingCanvasController : MonoBehaviour
     {
         timeCounterManager.EndCounter();
         endingCanvas.SetActive(true);
+        if (audioSource != null && victorySound != null)
+        {
+            audioSource.PlayOneShot(victorySound);
+        }
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -42,6 +48,7 @@ public class EndingCanvasController : MonoBehaviour
 
     }
 }
+
 
 //A lo que sea la meta se le pone un collider y se marca is trigger. Este script va en el objeto final y mete el canvas.
 //Al jugador se le pone la tag del player y se le mete rigidbody 
