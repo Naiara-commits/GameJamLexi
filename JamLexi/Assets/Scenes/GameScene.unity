@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 29306562}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.22, y: -0.28999987, z: 0}
+  m_LocalPosition: {x: -0.36, y: 3.06, z: 0}
   m_LocalScale: {x: 5.3333335, y: 3, z: 0.33333334}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -447,7 +447,7 @@ Transform:
   m_GameObject: {fileID: 1267159195}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.69, y: 3.17, z: 0}
+  m_LocalPosition: {x: -5.98, y: 3.1, z: 0}
   m_LocalScale: {x: 5.3333335, y: 3, z: 0.33333334}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -481,7 +481,7 @@ Transform:
   m_GameObject: {fileID: 1631304689}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.38, y: 3.2, z: 0}
+  m_LocalPosition: {x: -3.18, y: -0.28, z: 0}
   m_LocalScale: {x: 5.3333335, y: 3, z: 0.33333334}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -921,7 +921,7 @@ Transform:
   m_GameObject: {fileID: 1892527048}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.29, y: 3.15, z: 0}
+  m_LocalPosition: {x: 5.34, y: 3.05, z: 0}
   m_LocalScale: {x: 5.3333335, y: 3, z: 0.33333334}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1009,7 +1009,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892527048}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1088,7 +1088,7 @@ Transform:
   m_GameObject: {fileID: 1900429923}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.87, y: -0.23999986, z: 0}
+  m_LocalPosition: {x: 2.56, y: -0.23999986, z: 0}
   m_LocalScale: {x: 5.3333335, y: 3, z: 0.33333334}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1237,6 +1237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2004665207}
   - component: {fileID: 2004665206}
+  - component: {fileID: 2004665208}
   m_Layer: 0
   m_Name: Screen Controller
   m_TagString: Untagged
@@ -1264,7 +1265,31 @@ MonoBehaviour:
   - {fileID: 1900429925}
   onScreenEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2004665208}
+        m_TargetAssemblyTypeName: ControlsChanger, Assembly-CSharp
+        m_MethodName: OnScreenEntered
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1882982962}
+        m_TargetAssemblyTypeName: PlayerMovement2D, Assembly-CSharp
+        m_MethodName: Stun
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &2004665207
 Transform:
   m_ObjectHideFlags: 0
@@ -1285,6 +1310,45 @@ Transform:
   - {fileID: 1900429924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2004665208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004665205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ddfd98a17eab94a9c05ce4c35b12ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ControlsChanger
+  moveActionReference: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  screenMappings:
+  - screenNumber: 0
+    up: 37
+    down: 33
+    left: 15
+    right: 18
+  - screenNumber: 1
+    up: 15
+    down: 18
+    left: 33
+    right: 37
+  - screenNumber: 2
+    up: 33
+    down: 37
+    left: 18
+    right: 15
+  - screenNumber: 3
+    up: 18
+    down: 15
+    left: 37
+    right: 33
+  - screenNumber: 4
+    up: 37
+    down: 33
+    left: 18
+    right: 15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
