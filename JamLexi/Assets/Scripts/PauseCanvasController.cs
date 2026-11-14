@@ -58,7 +58,7 @@ public class CanvasController : MonoBehaviour
     public void VolverMainMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MenuScene");
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
