@@ -42,3 +42,8 @@ public class EndingCanvasController : MonoBehaviour
 
     }
 }
+
+//A lo que sea la meta se le pone un collider y se marca is trigger. Este script va en el objeto final y mete el canvas.
+//Al jugador se le pone la tag del player y se le mete rigidbody 
+//Añadir dos botones al canvas, uno de volver a empezar y otro de volver al menu principal
+
