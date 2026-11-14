@@ -8,6 +8,7 @@ public class TimeCounterManager : MonoBehaviour
     [SerializeField] private int minutes;
     [SerializeField] private float seconds;
     private bool isRunning = true;
+    LeaderBoardManager leaderBoardManager;
    void Start()
    {
         UploadTimeCounter();
@@ -35,5 +36,9 @@ public class TimeCounterManager : MonoBehaviour
     public void EndCounter()
     {
         isRunning = false;
+        int currentSeconds = Mathf.FloorToInt(seconds);
+        int totalSeconds = (minutes * 60) + currentSeconds;
+        leaderBoardManager.PrepareTime(totalSeconds);
+
     }
 }
