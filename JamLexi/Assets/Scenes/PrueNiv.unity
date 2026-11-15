@@ -295,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportOnTrigger2D
   destination: {fileID: 1312664030}
+  timeCounterManager: {fileID: 864550424}
 --- !u!61 &152167046
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1232,6 +1233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportOnTrigger2D
   destination: {fileID: 846551691}
+  timeCounterManager: {fileID: 864550424}
 --- !u!61 &355066187
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2341,6 +2343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportOnTrigger2D
   destination: {fileID: 355066185}
+  timeCounterManager: {fileID: 864550424}
 --- !u!61 &846551690
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2583,6 +2586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportOnTrigger2D
   destination: {fileID: 1473715987}
+  timeCounterManager: {fileID: 864550424}
 --- !u!61 &866885216
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2705,7 +2709,7 @@ GameObject:
   - component: {fileID: 990736003}
   - component: {fileID: 990736002}
   m_Layer: 0
-  m_Name: tp1 (8)
+  m_Name: tp8
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2724,6 +2728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportOnTrigger2D
   destination: {fileID: 990736004}
+  timeCounterManager: {fileID: 864550424}
 --- !u!61 &990736003
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3385,6 +3390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportOnTrigger2D
   destination: {fileID: 2139366627}
+  timeCounterManager: {fileID: 864550424}
 --- !u!61 &1236720510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3599,6 +3605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportOnTrigger2D
   destination: {fileID: 152167047}
+  timeCounterManager: {fileID: 864550424}
 --- !u!61 &1312664029
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3965,6 +3972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportOnTrigger2D
   destination: {fileID: 866885217}
+  timeCounterManager: {fileID: 864550424}
 --- !u!61 &1473715986
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6164,6 +6172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportOnTrigger2D
   destination: {fileID: 1236720508}
+  timeCounterManager: {fileID: 864550424}
 --- !u!61 &2139366626
 BoxCollider2D:
   m_ObjectHideFlags: 0
