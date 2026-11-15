@@ -35,7 +35,7 @@ public class EndingCanvasController : MonoBehaviour
     public void VolverAEmpezar()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("PrueNiv");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

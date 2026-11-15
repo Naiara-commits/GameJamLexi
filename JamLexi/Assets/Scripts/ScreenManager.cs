@@ -5,7 +5,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 {
     public void Jugar()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("PrueNiv");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

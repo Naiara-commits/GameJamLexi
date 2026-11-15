@@ -51,7 +51,7 @@ public class CanvasController : MonoBehaviour
     public void EmpezarNuevo()
     {
         Time.timeScale = 1f;           //Resetea el juego desde 0
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("PrueNiv");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
