@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5901466132185608939}
   - component: {fileID: 4718182558664090908}
   - component: {fileID: 7123157670209998899}
-  - component: {fileID: 2328068871410827869}
+  - component: {fileID: 3009541510023829492}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -81,8 +81,8 @@ MonoBehaviour:
   downSprite: {fileID: 4997414721641337111, guid: 24dab5a0fc71677438a94f9af678e9d5, type: 3}
   leftSprite: {fileID: 1135628028220583542, guid: 3da44591f551c294aa5cf93d7d557fae, type: 3}
   rightSprite: {fileID: 6775562017905426893, guid: 2be1f8c4cb7fa154fa0c52dcda17506d, type: 3}
---- !u!61 &2328068871410827869
-BoxCollider2D:
+--- !u!70 &3009541510023829492
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -115,18 +115,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.07011604, y: -0.008766174}
+  m_Size: {x: 1.7971687, y: 2.8055267}
+  m_Direction: 0
 --- !u!1 &8875207371846361994
 GameObject:
   m_ObjectHideFlags: 0
