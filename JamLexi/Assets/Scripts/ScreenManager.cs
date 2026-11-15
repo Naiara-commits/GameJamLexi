@@ -9,6 +9,17 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("CreditsScene");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
     public void Salir()
     {
         Application.Quit();
