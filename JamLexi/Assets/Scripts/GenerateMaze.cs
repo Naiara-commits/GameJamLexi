@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +9,10 @@ public class GenerateMaze : MonoBehaviour
     [SerializeField]
     GameObject roomPrefab;
 
+    [Header("Trampas en pasillos")]
+    [SerializeField] GameObject advancingTrapPrefab;
+    [SerializeField, Min(2)] int minimumTrapCorridorRooms = 3;
+
     Room[,] rooms = null;
 
     [SerializeField]
@@ -19,6 +22,7 @@ public class GenerateMaze : MonoBehaviour
     float roomWidth;
     float roomHeight;
     Stack<Room> stack = new Stack<Room>();
+    readonly List<GameObject> generatedTraps = new List<GameObject>();
 
     
     private void GetRoomSize()
@@ -212,20 +216,19 @@ public class GenerateMaze : MonoBehaviour
 
     public void CreateMaze()
     {
-
         if (!useRandomSeed)
         {
             UnityEngine.Random.InitState(mazeSeed);
         }
-        Reset();
-
+        ClearGeneratedTraps();
+        ResetMaze();
+        stack.Clear();
 
         //RemoveRoomWall(0, 0, Room.Directions.BOTTOM);
         RemoveRoomWall(0, 0, Room.Directions.TOP);
-
-
         RemoveRoomWall(numX - 1, numY - 1, Room.Directions.RIGHT);
 
+        rooms[0, 0].visited = true;
         stack.Push(rooms[0, 0]);
 
         bool flag = false;
@@ -233,8 +236,11 @@ public class GenerateMaze : MonoBehaviour
         {
             flag = GenerateStep();
         }
+
+        GenerateTrapsInLongCorridors();
     }
-    private void Reset()
+
+    private void ResetMaze()
     {
         for (int i = 0; i < numX; ++i)
         {
@@ -247,6 +253,118 @@ public class GenerateMaze : MonoBehaviour
                 rooms[i, j].visited = false;
             }
         }
+    }
+
+    private void GenerateTrapsInLongCorridors()
+    {
+        GameObject prefab = advancingTrapPrefab != null
+            ? advancingTrapPrefab
+            : Resources.Load<GameObject>("AdvancingTrap");
+
+        if (prefab == null)
+        {
+            Debug.LogWarning("No se encontro el prefab AdvancingTrap; no se generaran trampas.", this);
+            return;
+        }
+
+        if (prefab.GetComponent<AbdancingTrap>() == null)
+        {
+            Debug.LogError("El prefab de trampa debe tener el componente AbdancingTrap en el objeto raiz.", prefab);
+            return;
+        }
+
+        int minimumRooms = Mathf.Max(2, minimumTrapCorridorRooms);
+
+        for (int y = 0; y < numY; ++y)
+        {
+            int x = 0;
+            while (x < numX)
+            {
+                if (!IsHorizontalCorridorRoom(rooms[x, y]))
+                {
+                    ++x;
+                    continue;
+                }
+
+                int startX = x;
+                while (x < numX && IsHorizontalCorridorRoom(rooms[x, y]))
+                {
+                    ++x;
+                }
+
+                if (x - startX >= minimumRooms)
+                {
+                    SpawnAdvancingTrap(
+                        prefab,
+                        rooms[startX, y].transform.position,
+                        rooms[x - 1, y].transform.position);
+                }
+            }
+        }
+
+        for (int x = 0; x < numX; ++x)
+        {
+            int y = 0;
+            while (y < numY)
+            {
+                if (!IsVerticalCorridorRoom(rooms[x, y]))
+                {
+                    ++y;
+                    continue;
+                }
+
+                int startY = y;
+                while (y < numY && IsVerticalCorridorRoom(rooms[x, y]))
+                {
+                    ++y;
+                }
+
+                if (y - startY >= minimumRooms)
+                {
+                    SpawnAdvancingTrap(
+                        prefab,
+                        rooms[x, startY].transform.position,
+                        rooms[x, y - 1].transform.position);
+                }
+            }
+        }
+    }
+
+    private bool IsHorizontalCorridorRoom(Room room)
+    {
+        return room.IsOpen(Room.Directions.LEFT)
+            && room.IsOpen(Room.Directions.RIGHT)
+            && !room.IsOpen(Room.Directions.TOP)
+            && !room.IsOpen(Room.Directions.BOTTOM);
+    }
+
+    private bool IsVerticalCorridorRoom(Room room)
+    {
+        return room.IsOpen(Room.Directions.TOP)
+            && room.IsOpen(Room.Directions.BOTTOM)
+            && !room.IsOpen(Room.Directions.LEFT)
+            && !room.IsOpen(Room.Directions.RIGHT);
+    }
+
+    private void SpawnAdvancingTrap(GameObject prefab, Vector3 initialPosition, Vector3 finalPosition)
+    {
+        GameObject trapObject = Instantiate(prefab, initialPosition, Quaternion.identity, transform);
+        AbdancingTrap trap = trapObject.GetComponent<AbdancingTrap>();
+        trap.ConfigurePath(initialPosition, finalPosition);
+        generatedTraps.Add(trapObject);
+    }
+
+    private void ClearGeneratedTraps()
+    {
+        foreach (GameObject trap in generatedTraps)
+        {
+            if (trap != null)
+            {
+                Destroy(trap);
+            }
+        }
+
+        generatedTraps.Clear();
     }
 
 }

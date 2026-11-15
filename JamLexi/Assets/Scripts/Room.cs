@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,8 +32,6 @@ public class Room : MonoBehaviour
 
     public bool visited { get; set; } = false;
 
-    Dictionary<Directions, bool> dirflags = new Dictionary<Directions, bool>();
-
     private void Awake()
     {
         walls[Directions.TOP] = topWall;
@@ -50,7 +47,11 @@ public class Room : MonoBehaviour
 
     public void SetDirFlag(Directions dir, bool flag)
     {
-        dirflags[dir] = flag;
         SetActive(dir, flag);
+    }
+
+    public bool IsOpen(Directions dir)
+    {
+        return !walls[dir].activeSelf;
     }
 }

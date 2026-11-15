@@ -151,6 +151,8 @@ MonoBehaviour:
   mazeSeed: 77749
   useRandomSeed: 0
   roomPrefab: {fileID: 853574294186278298, guid: 66c14b08d8db03b4985a34e2624035c8, type: 3}
+  advancingTrapPrefab: {fileID: 0}
+  minimumTrapCorridorRooms: 3
   numX: 15
   numY: 10
 --- !u!4 &483679
@@ -1640,7 +1642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -770, y: -73.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &333060317
@@ -2043,6 +2045,8 @@ MonoBehaviour:
   mazeSeed: 78546
   useRandomSeed: 0
   roomPrefab: {fileID: 853574294186278298, guid: 66c14b08d8db03b4985a34e2624035c8, type: 3}
+  advancingTrapPrefab: {fileID: 0}
+  minimumTrapCorridorRooms: 3
   numX: 15
   numY: 10
 --- !u!4 &435381967
@@ -3343,6 +3347,8 @@ MonoBehaviour:
   mazeSeed: 12345
   useRandomSeed: 0
   roomPrefab: {fileID: 853574294186278298, guid: 66c14b08d8db03b4985a34e2624035c8, type: 3}
+  advancingTrapPrefab: {fileID: 0}
+  minimumTrapCorridorRooms: 3
   numX: 15
   numY: 10
 --- !u!4 &889639159
@@ -3730,6 +3736,8 @@ MonoBehaviour:
   mazeSeed: 79327
   useRandomSeed: 0
   roomPrefab: {fileID: 853574294186278298, guid: 66c14b08d8db03b4985a34e2624035c8, type: 3}
+  advancingTrapPrefab: {fileID: 0}
+  minimumTrapCorridorRooms: 3
   numX: 15
   numY: 10
 --- !u!4 &1019514388
@@ -3861,7 +3869,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c63136fca732d634791ce19fb672ce76, type: 3}
   - {fileID: 8300000, guid: fdf3e5a54f6df0e4e8f32db3a9a4777e, type: 3}
   - {fileID: 8300000, guid: 61fc30c0ea9bb714e9074f5a76196dcc, type: 3}
-  maxVolume: 1
+  maxVolume: 0.137
   fadeDuration: 2
   firstScreenNumber: 0
 --- !u!4 &1052911546
@@ -7161,7 +7169,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &2016698999
 Canvas:
   m_ObjectHideFlags: 0
@@ -7171,7 +7179,7 @@ Canvas:
   m_GameObject: {fileID: 2016698996}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 1295979720}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -7193,18 +7201,18 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016698996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.055341054, y: 0.055341054, z: 0.055341054}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 307651058}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -22.5, y: 23.9}
+  m_SizeDelta: {x: 637.99994, y: 359}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2020366372
 GameObject:
   m_ObjectHideFlags: 0
@@ -7374,6 +7382,8 @@ MonoBehaviour:
   mazeSeed: 54321
   useRandomSeed: 0
   roomPrefab: {fileID: 853574294186278298, guid: 66c14b08d8db03b4985a34e2624035c8, type: 3}
+  advancingTrapPrefab: {fileID: 0}
+  minimumTrapCorridorRooms: 3
   numX: 15
   numY: 10
 --- !u!4 &2042276988

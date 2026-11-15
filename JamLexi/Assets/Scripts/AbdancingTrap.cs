@@ -1,23 +1,24 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
 public class AbdancingTrap : MonoBehaviour
 {
     [SerializeField] float velocity = 5.0f;
     [SerializeField] Vector3 initialPosition;
     [SerializeField] Vector3 finalPosition;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] PlayerMovement2D playerMovement2D;
     private bool isDead = false;
 
-    void Start()
+    private void Awake()
     {
-        
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Move();
     }
@@ -25,28 +26,41 @@ public class AbdancingTrap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (isDead) return;
-        playerMovement2D.Stun(1.5f);
+
+        PlayerMovement2D player = other.GetComponentInParent<PlayerMovement2D>();
+        if (player == null) return;
+
+        player.Stun(1.5f);
         Death();
     }
 
-    void Move()
+    public void ConfigurePath(Vector3 startPosition, Vector3 endPosition)
+    {
+        initialPosition = startPosition;
+        finalPosition = endPosition;
+        transform.position = initialPosition;
+        isDead = false;
+        spriteRenderer.enabled = true;
+    }
+
+    private void Move()
     {
         if (isDead) return;
         transform.position = Vector3.MoveTowards(transform.position, finalPosition, velocity * Time.deltaTime);
-        if(transform.position == finalPosition)
+        if (transform.position == finalPosition)
         {
             Death();
         }
 
     }
 
-    void Death()
+    private void Death()
     {
         isDead = true;
         StartCoroutine(Revive());
     }
 
-    IEnumerator Revive()
+    private IEnumerator Revive()
     {
         spriteRenderer.enabled = false;
         yield return new WaitForSeconds(2.5f);
