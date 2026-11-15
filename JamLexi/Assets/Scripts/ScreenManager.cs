@@ -3,6 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
+    public static NewMonoBehaviourScript instance;
+
+    public void Awake()
+    {
+        if (instance == null) instance = this;
+    }
     public void Jugar()
     {
         SceneManager.LoadScene("PrueNiv");
@@ -20,6 +26,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         SceneManager.LoadScene("MenuScene");
     }
+
+    public void Ranking()
+    {
+        SceneManager.LoadScene("RankingScene");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
     public void Salir()
     {
         Application.Quit();

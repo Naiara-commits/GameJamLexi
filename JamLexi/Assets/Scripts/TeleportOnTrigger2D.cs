@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class TeleportOnTrigger2D : MonoBehaviour
@@ -8,11 +9,13 @@ public class TeleportOnTrigger2D : MonoBehaviour
     [SerializeField] private TimeCounterManager timeCounterManager;
 
     private readonly HashSet<int> blockedColliderIds = new HashSet<int>();
+    NewMonoBehaviourScript instance = new NewMonoBehaviourScript();
 
     private void Awake()
     {
         if (!GetComponent<Collider2D>().isTrigger)
             Debug.LogWarning("El collider del teletransporte debe tener Is Trigger activado.", this);
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -60,6 +63,9 @@ public class TeleportOnTrigger2D : MonoBehaviour
         if (destination.name == "tp8")
         {
             timeCounterManager.EndCounter();
+            int totalSeconds = timeCounterManager.GetTotalSeconds();
+            LeaderBoardManager.PrepareTimeStatic(totalSeconds);
+            instance.Ranking();
         }
     }
 
