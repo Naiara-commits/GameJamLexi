@@ -38,7 +38,7 @@ public class TimeCounterManager : MonoBehaviour
         isRunning = false;
         int currentSeconds = Mathf.FloorToInt(seconds);
         int totalSeconds = (minutes * 60) + currentSeconds;
-        leaderBoardManager.PrepareTime(totalSeconds);
+        if (leaderBoardManager != null) leaderBoardManager.PrepareTime(totalSeconds);
 
     }
 }

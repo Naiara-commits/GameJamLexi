@@ -5,6 +5,8 @@ using UnityEngine;
 public class TeleportOnTrigger2D : MonoBehaviour
 {
     [SerializeField] private Transform destination;
+    [SerializeField] private TimeCounterManager timeCounterManager;
+
     private readonly HashSet<int> blockedColliderIds = new HashSet<int>();
 
     private void Awake()
@@ -54,6 +56,11 @@ public class TeleportOnTrigger2D : MonoBehaviour
         }
 
         Debug.Log($"Jugador teletransportado a '{destination.name}'.", this);
+
+        if (destination.name == "tp8")
+        {
+            timeCounterManager.EndCounter();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
