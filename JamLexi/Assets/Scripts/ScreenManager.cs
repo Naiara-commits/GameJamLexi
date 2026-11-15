@@ -22,6 +22,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
     public void BackToMenu()
     {
         SceneManager.LoadScene("MenuScene");
