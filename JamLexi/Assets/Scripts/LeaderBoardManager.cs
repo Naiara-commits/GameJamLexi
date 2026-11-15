@@ -11,8 +11,13 @@ public class LeaderBoardManager : MonoBehaviour
 
     [SerializeField] TMP_InputField inputField;
     private int pendingTime;
+    public static int pendingTimeStatic = -1;
     void Start()
     {
+        if (pendingTimeStatic != -1)
+        {
+            pendingTime = pendingTimeStatic;
+        }
         UploadLeaderBoard();
         OrderLeaderBoard();
         UploadUI();
@@ -88,10 +93,23 @@ public class LeaderBoardManager : MonoBehaviour
     {
         pendingTime = gameTime;
     }
+    public static void PrepareTimeStatic(int gameTime)
+    {
+        pendingTimeStatic = gameTime;
+    }
     public void SaveScoreFromInput()
     {
-        AddTime(inputField.text, pendingTime);
-        inputField.text = "";
+        if (pendingTime != -1)
+        {
+            AddTime(inputField.text, pendingTime);
+            inputField.text = "";
+            pendingTime = -1;
+            pendingTimeStatic = -1;
+        }
+        else
+        {
+            Debug.LogWarning("No hay ningún tiempo pendientw");
+        }
     }
     private void SaveLeaderBoard()
     {
